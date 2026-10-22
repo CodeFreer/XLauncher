@@ -28,5 +28,7 @@ D:\X\  假设生成的启动器放在这个目录中
 使用 MinGW-w64 在 Windows 提示符中运行：
 
 ```shell
-gcc launcher.c -o launcher.exe -mwindows
+gcc launcher.c -o launcher.exe -mwindows -finput-charset=UTF-8 -fexec-charset=UTF-8
 ```
+
+为了正确显示中文提示，修改源代码并以支持 Utf-8 方式保存，并使用以上命令编译。
