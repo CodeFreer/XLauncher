@@ -5,7 +5,17 @@
 
 static void show_error(const char *message)
 {
-    MessageBoxA(NULL, message, "启动失败", MB_OK | MB_ICONERROR);
+    wchar_t wide_message[1024];
+
+    MultiByteToWideChar(
+        CP_UTF8,
+        0,
+        message,
+        -1,
+        wide_message,
+        sizeof(wide_message) / sizeof(wide_message[0]));
+
+    MessageBoxW(NULL, wide_message, L"启动失败", MB_OK | MB_ICONERROR);
 }
 
 /* directory 非 NULL 时创建映射；为 NULL 时删除映射。 */
